@@ -9,3 +9,11 @@ output "sn_public_id" {
 output "sn_private_id" {
     value = [for s in aws_subnet.private : s.id]
 }
+
+output "igw_id" {
+    value = aws_internet_gateway.this[0].id
+}
+
+output "route-table" {
+  value = [for s in aws_route_table.private : s.id]
+}
