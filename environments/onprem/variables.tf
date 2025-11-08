@@ -6,10 +6,6 @@ variable "cidr_block" {
   type = string
 }
 
-variable "region" {
-  type = string
-}
-
 variable "security_group_description" {
   type = string
 }
@@ -28,6 +24,10 @@ variable "private_subnets" {
     cidr_block = string
     az         = string
   }))
+}
+
+variable "create_igw" {
+  type = bool
 }
 
 variable "ingress_rules" {
@@ -50,4 +50,12 @@ variable "egress_rules" {
     protocol    = string
   }))
   default = []
+}
+
+variable "ami_id" {
+  type = string
+}
+
+variable "instance_type" {
+  type = string
 }
