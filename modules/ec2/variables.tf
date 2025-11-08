@@ -32,6 +32,7 @@ variable "public_subnet_id" {
 variable "user_data" {
   description = "User data script for the instance"
   type = string
+  default = null
 }
 
 variable "common_tags" {

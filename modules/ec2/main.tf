@@ -27,56 +27,62 @@ resource "aws_iam_role_policy_attachment" "ec2-role-ssm-instance-core" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
-resource "aws_iam_role_policy_attachment" "efs-full-access" {
-  role       = aws_iam_role.this.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonElasticFileSystemFullAccess"
-}
-
 resource "aws_instance" "this" {
     depends_on = [ aws_iam_instance_profile.this ]
     ami = var.ami_id
     instance_type = var.instance_type
-    #security_groups = var.security_group_ids
-    tags = merge({Name = "${var.name}"}, var.common_tags)
-    subnet_id = var.subnet_id
     iam_instance_profile = aws_iam_instance_profile.this.name
     user_data = var.user_data
 
-    network_interface {
-      network_interface_id = aws_network_interface.private.id
-      device_index = 0
+    primary_network_interface {
+      network_interface_id = aws_network_interface.eni-0.id
     }
 
-  dynamic "network_interface" {
-    for_each = var.subnet_type == "public" ? [1] : []
-    content {
-      network_interface_id = aws_network_interface.secondary[0].id
-      device_index         = 1
-    }
-  }
     metadata_options {
       http_endpoint = "enabled"
       http_tokens = "optional"
     }
+    
+    lifecycle {
+      ignore_changes = [source_dest_check]
+    }
+    
+    tags = merge({Name = "${var.name}"}, var.common_tags)
+}
+
+resource "aws_network_interface_attachment" "this" {
+  count                = var.subnet_type == "public" ? 1 : 0
+  instance_id          = aws_instance.this.id
+  network_interface_id = aws_network_interface.eni-1[0].id
+  device_index         = 1
 }
 
 resource "aws_eip" "this" {
   count = var.subnet_type == "public" ? 1 : 0
-  instance = aws_instance.this.id                                               
   domain = "vpc"
-  network_interface = aws_network_interface.public[0].id
-  tags = merge({Name = "${var.name}-eip-${count.index}"}, var.common_tags)
+  network_interface = aws_network_interface.eni-0.id
+  depends_on = [aws_instance.this]
+  tags = merge({Name = "${var.name}-eip"}, var.common_tags)
 }
 
-resource "aws_network_interface" "public" {
-  count = var.subnet_type == "public" ? 1 : 0
+resource "aws_network_interface" "eni-0" {
   subnet_id   = var.public_subnet_id
   security_groups = var.security_group_ids
   source_dest_check = false
 }
 
-resource "aws_network_interface" "private" {
+resource "aws_network_interface" "eni-1" {
+  count = var.subnet_type == "public" ? 1 : 0
   subnet_id   = var.subnet_id
   security_groups = var.security_group_ids
   source_dest_check = false
 }
+
+# --------------- ec2 Instance Connect Endpoint ----------------- #
+
+# resource "aws_ec2_instance_connect_endpoint" "this" {
+#   subnet_id         = var.subnet_id
+#   security_group_ids = var.security_group_ids
+#   preserve_client_ip = false
+#   tags = merge({Name = "${var.name}-eip-ec2-endpoint"}, var.common_tags)
+# }
