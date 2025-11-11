@@ -15,6 +15,7 @@ variable "common_tags" {
 
 variable "public_subnets" {
   description = "List of public subnets"
+  default = []
   type = list(object({
     name                  = string
     cidr_block            = string
