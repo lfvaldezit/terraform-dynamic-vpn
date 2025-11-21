@@ -48,3 +48,7 @@ variable "subnet_type" {
         error_message = "subnet_type must be either public or private"
     }
 }
+
+variable "source_dest_check" {
+  type = string
+}

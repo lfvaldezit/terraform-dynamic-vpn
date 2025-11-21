@@ -7,5 +7,9 @@ output "eni-1_id" {
 }
 
 output "eip_address" {
-  value = aws_eip.this[0].address
+  value = aws_eip.this[0].public_ip
+}
+
+output "priv-ip-address-0" {
+  value = aws_network_interface.eni-0.private_ip
 }
