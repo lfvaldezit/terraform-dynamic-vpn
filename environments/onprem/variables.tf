@@ -59,3 +59,7 @@ variable "ami_id" {
 variable "instance_type" {
   type = string
 }
+
+variable "source_dest_check" {
+  type = bool
+}

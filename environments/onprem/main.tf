@@ -29,6 +29,7 @@ module "router-1" {
   subnet_id          = module.vpc.sn_private_id[0]
   security_group_ids = [module.security-group.security_group_id]
   common_tags        = local.common_tags
+  source_dest_check = var.source_dest_check
   user_data = <<-EOF
             #!/bin/bash -xe
             apt-get update && apt-get install -y strongswan wget
@@ -55,8 +56,9 @@ module "router-2" {
   subnet_id          = module.vpc.sn_private_id[1]
   security_group_ids = [module.security-group.security_group_id]
   common_tags        = local.common_tags
+  source_dest_check = var.source_dest_check
   user_data = <<-EOF
-            #!/bin/bash -xe
+            !/bin/bash -xe
             apt-get update && apt-get install -y strongswan wget
             mkdir /home/ubuntu/demo_assets
             cd /home/ubuntu/demo_assets
