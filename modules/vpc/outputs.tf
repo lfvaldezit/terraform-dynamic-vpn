@@ -11,7 +11,7 @@ output "sn_private_id" {
 }
 
 output "igw_id" {
-    value = aws_internet_gateway.this[0].id
+    value = try(aws_internet_gateway.this[0].id, null)
 }
 
 output "route-table" {

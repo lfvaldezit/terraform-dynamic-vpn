@@ -45,7 +45,7 @@ resource "aws_route_table" "public" {
   (substr(values(aws_subnet.public)[count.index].availability_zone,-1, 1))}"}, 
   var.common_tags)
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "0.0.0.0/0"                                                                                                                                                        
     gateway_id = aws_internet_gateway.this[0].id
   }
 }
