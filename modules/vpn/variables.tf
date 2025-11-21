@@ -8,7 +8,8 @@ variable "transit_gateway_id" {
 variable "customer_gateway" {
     type = list(object({
       bgp_asn = number,
-      ip_address = string
+      ip_address = string,
+      name = string
     }))  
 }
 variable "common_tags" {
