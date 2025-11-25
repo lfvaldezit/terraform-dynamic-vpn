@@ -18,15 +18,16 @@ variable "name" {
   type = string
 }
 
-variable "subnet_id" {
-  description = "subnet IDs where EC2 instance will be deployed"
-  type = string
-}
-
 variable "public_subnet_id" {
   description = "Public subnet ID (required when subnet_type is 'public')"
-  type        = string
-  default     = null
+  type        = list(string)
+  default     = []
+}
+
+variable "private_subnet_id" {
+  description = ""
+  type        = list(string)
+  default     = []
 }
 
 variable "user_data" {
@@ -40,15 +41,23 @@ variable "common_tags" {
   type = map(string)
 }
 
-variable "subnet_type" {
-    description = "Subnet type for the instance"
-    type = string
-    validation {
-        condition = contains(["public", "private"], var.subnet_type)
-        error_message = "subnet_type must be either public or private"
-    }
-}
+# variable "subnet_type" {
+#     description = "Subnet type for the instance"
+#     type = string
+#     validation {
+#         condition = contains(["public", "private"], var.subnet_type)
+#         error_message = "subnet_type must be either public or private"
+#     }
+# }
 
 variable "source_dest_check" {
   type = string
+}
+
+variable "instance_count" {
+  type = string
+}
+
+variable "enable_public_eni" {
+  type = bool
 }
