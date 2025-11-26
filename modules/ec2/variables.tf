@@ -19,13 +19,13 @@ variable "name" {
 }
 
 variable "public_subnet_id" {
-  description = "Public subnet ID (required when subnet_type is 'public')"
+  description = "Public subnet ID"
   type        = list(string)
   default     = []
 }
 
 variable "private_subnet_id" {
-  description = ""
+  description = "Private subnet ID"
   type        = list(string)
   default     = []
 }

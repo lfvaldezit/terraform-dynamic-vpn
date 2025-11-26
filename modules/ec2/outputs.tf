@@ -1,15 +1,19 @@
-# output "eni-0_id" {
-#   value = aws_network_interface.eni-0.id
-# }
+output "public_eni_ids" {
+  description = "IDs de las ENIs públicas"
+  value       = var.enable_public_eni ? aws_network_interface.public[*].id : []
+}
 
-# output "eni-1_id" {
-#   value = aws_network_interface.eni-1[0].id
-# }
+output "private_eni_ids" {
+  description = "IDs de las ENIs privadas"
+  value       = aws_network_interface.private[*].id
+}
 
-# output "eip_address" {
-#   value = aws_eip.this[0].public_ip
-# }
+output "public_ips" {
+  description = "IPs públicas"
+  value       = var.enable_public_eni ? aws_eip.this[*].public_ip : []
+}
 
-# output "priv-ip-address-0" {
-#   value = aws_network_interface.eni-0.private_ip
-# }
+output "private_ips" {
+  description = "IPs privadas de las ENIs privadas"
+  value       = aws_network_interface.private[*].private_ip
+}
