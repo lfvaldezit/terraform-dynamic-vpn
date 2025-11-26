@@ -13,7 +13,3 @@ output "sn_private_id" {
 output "igw_id" {
     value = try(aws_internet_gateway.this[0].id, null)
 }
-
-output "route-table" {
-  value = [for s in aws_route_table.private : s.id]
-}
