@@ -11,7 +11,7 @@ resource "aws_vpn_connection" "this" {
     count = length(var.customer_gateway)
     customer_gateway_id = aws_customer_gateway.this[count.index].id
     transit_gateway_id = var.transit_gateway_id
-    enable_acceleration = true
+    enable_acceleration = false
     static_routes_only = false
     type = "ipsec.1"
     tags = merge({Name = "${var.name}"}, var.common_tags)
