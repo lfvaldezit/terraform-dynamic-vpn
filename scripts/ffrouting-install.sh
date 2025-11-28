@@ -46,9 +46,13 @@ sudo adduser --system --ingroup frr --home /var/run/frr/ \
    --gecos "FRR suite" --shell /sbin/nologin frr
 sudo usermod -a -G frrvty frr
 
-cd /tmp
-git clone https://github.com/frrouting/frr.git frr
+cd /
+mkdir frr
 cd frr
+wget https://github.com/FRRouting/frr/archive/refs/tags/frr-8.4.6.tar.gz
+#git clone https://github.com/frrouting/frr.git frr
+tar -zxf frr-8.4.6.tar.gz
+cp -r  frr-frr-8.4.6/* .
 ./bootstrap.sh
 ./configure \
     --prefix=/usr \
