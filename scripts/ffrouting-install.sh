@@ -14,10 +14,10 @@ sudo apt-get install -y \
 cd /tmp
 git clone https://github.com/CESNET/libyang.git
 cd libyang
-					 
+git checkout v2.1.128
 mkdir build; cd build
-cmake -DENABLE_LYD_PRIV=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-      -D CMAKE_BUILD_TYPE:String="Release" ..
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+      -DCMAKE_BUILD_TYPE:String="Release" ..
 make
 sudo make install
 
@@ -95,7 +95,7 @@ sudo sed -i "/bgpd=no/ cbgpd=yes" /etc/frr/daemons
 sudo sed -i "/bgpd_options=\"   -A 127.0.0.1\"/ cbgpd_options=\"   -A 127.0.0.1 -M rpki\"" /etc/frr/daemons
 
 # Allow FRR to write PID files
-sudo chmod 740 /var/run/frr						  
-						   
+sudo chmod 740 /var/run/frr
+
 # Start FRR
 sudo systemctl start frr
