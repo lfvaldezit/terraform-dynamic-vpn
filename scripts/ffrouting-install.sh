@@ -8,16 +8,15 @@ sudo apt-get install -y \
    pkg-config libpam0g-dev libjson-c-dev bison flex python3-pytest \
    libc-ares-dev python3-dev libsystemd-dev python-ipaddress python3-sphinx \
    install-info build-essential libsystemd-dev libsnmp-dev perl libcap-dev \
-   libpcre3-dev libelf-dev libpcre2-dev cmake 
+   libpcre3-dev cmake 
 
 # Libyang
 cd /tmp
 git clone https://github.com/CESNET/libyang.git
 cd libyang
-git checkout v2.1.128
 mkdir build; cd build
-cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-      -DCMAKE_BUILD_TYPE:String="Release" ..
+cmake -DENABLE_LYD_PRIV=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+      -D CMAKE_BUILD_TYPE:String="Release" ..
 make
 sudo make install
 
@@ -46,13 +45,9 @@ sudo adduser --system --ingroup frr --home /var/run/frr/ \
    --gecos "FRR suite" --shell /sbin/nologin frr
 sudo usermod -a -G frrvty frr
 
-cd /
-mkdir frr
+cd /tmp
+git clone https://github.com/frrouting/frr.git frr
 cd frr
-wget https://github.com/FRRouting/frr/archive/refs/tags/frr-8.4.6.tar.gz
-#git clone https://github.com/frrouting/frr.git frr
-tar -zxf frr-8.4.6.tar.gz
-cp -r  frr-frr-8.4.6/* .
 ./bootstrap.sh
 ./configure \
     --prefix=/usr \
@@ -97,9 +92,6 @@ sudo sed -i "/net.ipv6.conf.all.forwarding=1/ cnet.ipv6.conf.all.forwarding=1" /
 # Enable BGP
 sudo sed -i "/bgpd=no/ cbgpd=yes" /etc/frr/daemons
 sudo sed -i "/bgpd_options=\"   -A 127.0.0.1\"/ cbgpd_options=\"   -A 127.0.0.1 -M rpki\"" /etc/frr/daemons
-
-# Allow FRR to write PID files
-sudo chmod 740 /var/run/frr
 
 # Start FRR
 sudo systemctl start frr
