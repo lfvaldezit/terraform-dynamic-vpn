@@ -34,7 +34,8 @@ cd /tmp
 git clone https://github.com/rtrlib/rtrlib/ 
 cd rtrlib
 mkdir build; cd build 
-cmake -D CMAKE_BUILD_TYPE=Release ..
+#cmake -D CMAKE_BUILD_TYPE=Release ..
+cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_ASPA=ON -DENABLE_RTR=ON -DCMAKE_INSTALL_PREFIX=/usr ....
 make
 sudo make install
 sudo ldconfig
