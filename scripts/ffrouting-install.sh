@@ -8,12 +8,13 @@ sudo apt-get install -y \
    pkg-config libpam0g-dev libjson-c-dev bison flex python3-pytest \
    libc-ares-dev python3-dev libsystemd-dev python-ipaddress python3-sphinx \
    install-info build-essential libsystemd-dev libsnmp-dev perl libcap-dev \
-   libpcre3-dev cmake 
+   libpcre3-dev libelf-dev libpcre2-dev cmake 
 
 # Libyang
 cd /tmp
 git clone https://github.com/CESNET/libyang.git
 cd libyang
+					 
 mkdir build; cd build
 cmake -DENABLE_LYD_PRIV=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr \
       -D CMAKE_BUILD_TYPE:String="Release" ..
@@ -93,5 +94,8 @@ sudo sed -i "/net.ipv6.conf.all.forwarding=1/ cnet.ipv6.conf.all.forwarding=1" /
 sudo sed -i "/bgpd=no/ cbgpd=yes" /etc/frr/daemons
 sudo sed -i "/bgpd_options=\"   -A 127.0.0.1\"/ cbgpd_options=\"   -A 127.0.0.1 -M rpki\"" /etc/frr/daemons
 
+# Allow FRR to write PID files
+sudo chmod 740 /var/run/frr						  
+						   
 # Start FRR
 sudo systemctl start frr
