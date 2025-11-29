@@ -72,6 +72,7 @@ cd frr
     --enable-systemd=yes \
     --enable-rpki=yes \
     --with-pkg-git-version \
+    --disable-aspa \
     --with-pkg-extra-version=-chriselsen
 make
 sudo make install
