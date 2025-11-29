@@ -101,6 +101,7 @@ cd frr
 #     --disable-aspa \
 #     --with-pkg-extra-version=-chriselsen
 make
+sed -i '/#include <rtrlib\/aspa\/aspa.h>/d' bgpd/bgp_rpki.c
 sudo make install
 
 sudo install -m 775 -o frr -g frr -d /var/log/frr
