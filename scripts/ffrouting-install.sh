@@ -8,16 +8,16 @@ sudo apt-get install -y \
    pkg-config libpam0g-dev libjson-c-dev bison flex python3-pytest \
    libc-ares-dev python3-dev libsystemd-dev python-ipaddress python3-sphinx \
    install-info build-essential libsystemd-dev libsnmp-dev perl libcap-dev \
-   libpcre3-dev cmake 
+   libpcre3-dev libelf-dev libpcre2-dev cmake 
 
 # Libyang
 cd /tmp
 git clone https://github.com/CESNET/libyang.git
 cd libyang
-					 
+git checkout v2.1.128
 mkdir build; cd build
-cmake -DENABLE_LYD_PRIV=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-      -D CMAKE_BUILD_TYPE:String="Release" ..
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+      -DCMAKE_BUILD_TYPE:String="Release" ..
 make
 sudo make install
 
