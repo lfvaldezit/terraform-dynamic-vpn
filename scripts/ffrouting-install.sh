@@ -33,8 +33,10 @@ sudo apt-get install libssh-dev -y
 cd /tmp
 git clone https://github.com/rtrlib/rtrlib/ 
 cd rtrlib
-mkdir build; cd build 
-cmake -D CMAKE_BUILD_TYPE=Release ..
+git checkout v0.8.0
+mkdir build; cd build
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+#cmake -D CMAKE_BUILD_TYPE=Release ..
 make
 sudo make install
 sudo ldconfig
@@ -71,37 +73,9 @@ cd frr
     --enable-vty-group=frrvty \
     --enable-systemd=yes \
     --enable-rpki=yes \
-    --disable-aspa \
     --with-pkg-git-version \
-    --with-pkg-extra-version=-chriselsen \
-    CFLAGS="-DHAVE_ASPA=0" \
-    CPPFLAGS="-DHAVE_ASPA=0"
-# ./configure \
-#     --prefix=/usr \
-#     --includedir=\${prefix}/include \
-#     --enable-exampledir=\${prefix}/share/doc/frr/examples \
-#     --bindir=\${prefix}/bin \
-#     --sbindir=\${prefix}/lib/frr \
-#     --libdir=\${prefix}/lib/frr \
-#     --libexecdir=\${prefix}/lib/frr \
-#     --localstatedir=/var/run/frr \
-#     --sysconfdir=/etc/frr \
-#     --with-moduledir=\${prefix}/lib/frr/modules \
-#     --with-libyang-pluginsdir=\${prefix}/lib/frr/libyang_plugins \
-#     --enable-configfile-mask=0640 \
-#     --enable-logfile-mask=0640 \
-#     --enable-snmp=agentx \
-#     --enable-multipath=64 \
-#     --enable-user=frr \
-#     --enable-group=frr \
-#     --enable-vty-group=frrvty \
-#     --enable-systemd=yes \
-#     --enable-rpki=yes \
-#     --with-pkg-git-version \
-#     --disable-aspa \
-#     --with-pkg-extra-version=-chriselsen
+    --with-pkg-extra-version=-chriselsen
 make
-sed -i '/#include <rtrlib\/aspa\/aspa.h>/d' bgpd/bgp_rpki.c
 sudo make install
 
 sudo install -m 775 -o frr -g frr -d /var/log/frr
