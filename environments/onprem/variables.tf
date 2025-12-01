@@ -52,7 +52,11 @@ variable "egress_rules" {
   default = []
 }
 
-variable "ami_id" {
+variable "router_ami_id" {
+  type = string
+}
+
+variable "server_ami_id" {
   type = string
 }
 
@@ -60,6 +64,18 @@ variable "instance_type" {
   type = string
 }
 
-variable "source_dest_check" {
+variable "router_source_dest_check" {
+  type = bool
+}
+
+variable "ec2_source_dest_check" {
+  type = bool
+}
+
+variable "instance_count" {
+  type = string
+}
+
+variable "enable_public_eni" {
   type = bool
 }

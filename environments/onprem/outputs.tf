@@ -1,15 +1,11 @@
 output "CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP" {
-    value = module.router-1.eip_address
+  value = { for idx, outside_ip in module.router.public_ips :
+    "ROUTER${idx + 1}_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP: " => outside_ip
+  }
 }
 
-output "ROUTER1_PRIVATE_IP" {
-    value = module.router-1.priv-ip-address-0
+output "ROUTER1_PRIVATE1-2_IP" {
+  value = { for idx, private_ip in module.router.private_ips :
+    "ROUTER${idx + 1}_PRIVATE1-2_IP: " => private_ip
+  }
 }
-
-# output "CONN2_TUNNEL1-2_ONPREM_OUTSIDE_IP" {
-#     value = module.router-2.eip_address
-# }
-
-# output "ROUTER2_PRIVATE_IP" {
-#     value = module.router-2.priv-ip-address-0
-# }
