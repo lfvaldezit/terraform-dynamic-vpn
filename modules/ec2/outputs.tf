@@ -15,5 +15,5 @@ output "public_ips" {
 
 output "private_ips" {
   description = "IPs privadas de las ENIs privadas"
-  value       = aws_network_interface.private[*].private_ip
+  value       = aws_network_interface.public[*].private_ip
 }

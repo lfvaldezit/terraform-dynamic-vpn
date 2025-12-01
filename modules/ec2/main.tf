@@ -39,6 +39,10 @@ resource "aws_instance" "this" {
     network_interface_id = var.enable_public_eni ? aws_network_interface.public[count.index].id : aws_network_interface.private[count.index].id
   }
 
+  lifecycle {
+  ignore_changes = all
+}
+
   depends_on = [ aws_network_interface.public, aws_network_interface.private]
 }
 
@@ -72,12 +76,3 @@ resource "aws_eip" "this" {
   tags = merge({Name = "${var.name}-eip-${count.index + 1 }"}, var.common_tags)
   depends_on = [ aws_instance.this ]
 }
-
-# --------------- ec2 Instance Connect Endpoint ----------------- #
-
-# resource "aws_ec2_instance_connect_endpoint" "this" {
-#   subnet_id         = var.subnet_id
-#   security_group_ids = var.security_group_ids
-#   preserve_client_ip = false
-#   tags = merge({Name = "${var.name}-eip-ec2-endpoint"}, var.common_tags)
-# }
