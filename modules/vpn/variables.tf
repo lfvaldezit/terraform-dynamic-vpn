@@ -15,3 +15,7 @@ variable "customer_gateway" {
 variable "common_tags" {
   type = map(string)
 }
+
+variable "transit_gateway_route_table_id" {
+  type = string
+}
