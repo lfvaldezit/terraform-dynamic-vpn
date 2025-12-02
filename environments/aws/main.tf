@@ -17,20 +17,22 @@ module "tgw" {
 }
 
 module "vpn-1" {
-  source             = "../../modules/vpn"
-  name               = local.vpn1_name
-  customer_gateway   = var.customer_gateway_1
-  transit_gateway_id = module.tgw.transit_gateway_id
-  common_tags        = local.common_tags
+  source                         = "../../modules/vpn"
+  name                           = local.vpn1_name
+  customer_gateway               = var.customer_gateway_1
+  transit_gateway_id             = module.tgw.transit_gateway_id
+  transit_gateway_route_table_id = module.tgw.transit_gateway_route_table
+  common_tags                    = local.common_tags
 }
 
-# module vpn-2 {
-#     source = "../../modules/vpn"
-#     name = local.vpn2_name
-#     customer_gateway =  var.customer_gateway_2
-#     transit_gateway_id = module.tgw.transit_gateway_id 
-#     common_tags = local.common_tags
-# }
+module vpn-2 {
+    source = "../../modules/vpn"
+    name = local.vpn2_name
+    customer_gateway =  var.customer_gateway_2
+    transit_gateway_id = module.tgw.transit_gateway_id 
+transit_gateway_route_table_id = module.tgw.transit_gateway_route_table
+    common_tags = local.common_tags
+}
 
 module "private-rt" {
   source           = "../../modules/route-table"
@@ -38,8 +40,8 @@ module "private-rt" {
   route_table_type = "private"
   subnet_ids       = module.vpc.sn_private_id
   vpc_id           = module.vpc.vpc_id
-  create_tgw = var.create_tgw
-  tgw_id = module.tgw.transit_gateway_id
+  create_tgw       = var.create_tgw
+  tgw_id           = module.tgw.transit_gateway_id
   common_tags      = local.common_tags
 }
 
@@ -68,4 +70,12 @@ module "ec2" {
   user_data          = <<-EOF
             #!/bin/bash -xe
   EOF
+}
+
+module "ec2-endpoint" {
+  source             = "../../modules/endpoints"
+  name               = var.name
+  security_group_ids = [module.security-group.security_group_id]
+  subnet_id          = module.vpc.sn_private_id[0]
+  common_tags        = local.common_tags
 }

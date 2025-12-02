@@ -15,5 +15,5 @@ locals {
   vpn1_name        = "${var.name}-vpn-1"
   vpn2_name        = "${var.name}-vpn-2"
   server_name      = "${var.name}-ec2"
-  private_rt_name = "${var.name}-private-rt"
+  private_rt_name  = "${var.name}-private-rt"
 }
