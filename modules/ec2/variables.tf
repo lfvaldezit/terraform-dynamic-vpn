@@ -51,13 +51,16 @@ variable "common_tags" {
 # }
 
 variable "source_dest_check" {
+  description = "Blocks traffic if the instance isn't the source or destination"
   type = string
 }
 
 variable "instance_count" {
+  description = "Number of EC2 instances to be created"
   type = string
 }
 
 variable "enable_public_eni" {
+  description = "Create public ENI"
   type = bool
 }
