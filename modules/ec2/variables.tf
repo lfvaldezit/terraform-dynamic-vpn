@@ -14,7 +14,7 @@ variable "security_group_ids" {
 }
 
 variable "name" {
-  description = "Base name prefix used to label all created resources "
+  description = "Base name prefix used to label all created resources"
   type = string
 }
 
