@@ -41,15 +41,6 @@ variable "common_tags" {
   type = map(string)
 }
 
-# variable "subnet_type" {
-#     description = "Subnet type for the instance"
-#     type = string
-#     validation {
-#         condition = contains(["public", "private"], var.subnet_type)
-#         error_message = "subnet_type must be either public or private"
-#     }
-# }
-
 variable "source_dest_check" {
   description = "Blocks traffic if the instance isn't the source or destination"
   type = string
