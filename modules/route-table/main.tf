@@ -1,6 +1,7 @@
 resource "aws_route_table" "this" {
   count = length(var.subnet_ids)
   vpc_id = var.vpc_id
+  tags = merge({Name = "${var.name}"-"${count.index+1}"})
 #   tags = merge({Name = "${var.name}-public-rt-${upper
 #   (substr(values(aws_subnet.public)[count.index].availability_zone,-1, 1))}"}, 
 #   var.common_tags)
