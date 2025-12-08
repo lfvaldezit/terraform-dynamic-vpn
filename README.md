@@ -14,7 +14,7 @@
 
 ## 📝 Instructions
 
-- [VPN Tunnel Config](https://raw.githubusercontent.com/lfvaldezit/terraform-dynamic-vpn/main/instructions/vpntunnel_config.md)
+- [VPN Tunnel Config](https://github.com/lfvaldezit/terraform-dynamic-vpn/blob/main/instructions/vpntunnel_config.md)
 - [BGP Config](https://raw.githubusercontent.com/lfvaldezit/terraform-dynamic-vpn/main/instructions/bgp_config.md)
 
 
