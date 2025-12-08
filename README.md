@@ -77,7 +77,7 @@ Save the output after apply is completed.
    Use the onprem output to complete the next placeholders:   
    - ROUTER1_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP   
    - ROUTER2_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP   
-
+      
    ```bash
     name = "vpn-aws"
 
@@ -121,7 +121,7 @@ Save the output after apply is completed.
     ```
 
     ```bash
-   cd /environments/onprem
+   cd /environments/aws
    terraform init
    terraform apply
     ```
