@@ -1,6 +1,6 @@
-# Site-to-site VPN
+# Site-to-site VPN (In progress...)
 
-## 🏗️ Architecture (In progress...)
+## 🏗️ Architecture 
 
 <img width="800" height="500" alt="image" src="https://raw.githubusercontent.com/lfvaldezit/terraform-dynamic-vpn/main/image.png" />
 
