@@ -26,7 +26,7 @@
    aws configure
    ```
 3. **ON-PREM infrastructure**   
-   Adjusts the variables in /environments/onprem/terraform.example.tfvars as needed
+   Adjusts the variables in `/environments/onprem/terraform.example.tfvars` as needed
 
    ```bash
     name = "vpn-onprem"
@@ -73,10 +73,10 @@ Save the output after apply is completed.
 
 4. **AWS infrastructure**
 
-   Adjusts the variables in /environments/aws/terraform.example.tfvars as needed.   
+   Adjusts the variables in `/environments/aws/terraform.example.tfvars` as needed.   
    Use the onprem output to complete the next placeholders:   
-   - ROUTER1_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP   
-   - ROUTER2_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP   
+   - `ROUTER1_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP`   
+   - `ROUTER2_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP`   
       
    ```bash
     name = "vpn-aws"
@@ -126,6 +126,7 @@ Save the output after apply is completed.
    terraform apply
     ```
 Save the output after apply is completed.
+Continue to the next section `Instructions` to configure the onprem routers.
 
 ## 📝 Instructions
 
