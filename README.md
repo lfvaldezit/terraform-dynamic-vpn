@@ -125,7 +125,7 @@ Save the output after apply is completed.
    terraform init
    terraform apply
     ```
-Save the output after apply is completed.
+Save the output after apply is completed.   
 Continue to the next section `Instructions` to configure the onprem routers.
 
 ## 📝 Instructions
