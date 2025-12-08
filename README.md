@@ -43,12 +43,12 @@
 ├── instructions/ 
 ├── scripts/        
 └── modules/
-    └── ec2/     
-    └── endpoints/     
-    └── route-table/     
-    └── security-group/
-    └── transit-gateway/
-    └── vpc/           
+    ├── ec2/     
+    ├── endpoints/     
+    ├── route-table/     
+    ├── security-group/
+    ├── transit-gateway/
+    ├── vpc/           
     └── vpn/     
 ```
 
