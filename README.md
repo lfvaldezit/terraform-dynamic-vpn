@@ -69,6 +69,7 @@
    terraform init
    terraform apply
     ```
+Save the output after apply is completed.
 
 4. **AWS infrastructure**
 
