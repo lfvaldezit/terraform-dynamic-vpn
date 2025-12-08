@@ -25,7 +25,7 @@
    ```bash
    aws configure
    ```
-3. **ON-PREM infrastructure**
+3. **ON-PREM infrastructure**   
    Adjusts the variables in /environments/onprem/terraform.example.tfvars as needed
 
    ```bash
