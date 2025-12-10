@@ -126,6 +126,15 @@ Save the output after apply is completed.
    terraform apply
     ```
 Save the output after apply is completed.   
+
+Before going to the next section   
+Go to VPN => Site-to-site VPN connections   
+Select your newly created VPN connection
+Click on `Download Configuration`   
+Vendor `Cisco`. Platform `ISR Series Routers`   
+Click `Download`  
+
+
 Continue to the next section `Instructions` to configure the onprem routers.
 
 ## 📝 Instructions
