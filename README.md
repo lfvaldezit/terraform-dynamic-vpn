@@ -140,7 +140,7 @@ Continue to the next section, `Instructions`, to configure the on-prem routers
 ## 📝 Instructions
 
 - [VPN Tunnel Config](https://github.com/lfvaldezit/terraform-dynamic-vpn/blob/main/instructions/vpntunnel_config.md)
-- [BGP Config](https://raw.githubusercontent.com/lfvaldezit/terraform-dynamic-vpn/main/instructions/bgp_config.md)
+- [BGP Config](https://github.com/lfvaldezit/terraform-dynamic-vpn/blob/main/instructions/bgp_config.md)
 
 ## 📁 Project Structure
 
