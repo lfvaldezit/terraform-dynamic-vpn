@@ -6,10 +6,10 @@
 
 ## 🌐 Stack Overview
 
-* **VPC**: Provides an isolated virtual network where all AWS resources are deployed.
-* **Internet Gateway**: Internet connectivity for resources.
-* **EC2 Instances**: Virtual machines running StrongSwan (IPsec) and FRRouting to establish and route traffic through the VPN.
-* **Transit Gateway**: Acts as a central hub to connect multiple VPCs and VPNs.
+* **VPC**: Provides an isolated virtual network where all AWS resources are deployed
+* **Internet Gateway**: Internet connectivity for resources
+* **EC2 Instances**: Virtual machines running StrongSwan (IPsec) and FRRouting to establish and route traffic through the VPN
+* **Transit Gateway**: Acts as a central hub to connect multiple VPCs and VPNs
 * **EC2 Instance Connect Endpoint**: SSH access to private-subnet EC2 instances through the AWS network
 
 ## ⚙️ Configuration
@@ -25,7 +25,7 @@
    ```bash
    aws configure
    ```
-3. **ON-PREM infrastructure**   
+3. **ONPREM infrastructure**   
    Adjusts the variables in `/environments/onprem/terraform.example.tfvars` as needed
 
    ```bash
@@ -69,12 +69,12 @@
    terraform init
    terraform apply
     ```
-Save the output after apply is completed.
+Save the output once the apply is completed  
 
 4. **AWS infrastructure**
 
    Adjusts the variables in `/environments/aws/terraform.example.tfvars` as needed.   
-   Use the onprem output to complete the next placeholders:   
+   Use the onprem output to complete the following placeholders:   
    - `ROUTER1_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP`   
    - `ROUTER2_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP`   
       
@@ -125,17 +125,17 @@ Save the output after apply is completed.
    terraform init
    terraform apply
     ```
-Save the output after apply is completed.   
+Save the output once the apply is completed  
 
-Before going to the next section   
-Go to VPN => Site-to-site VPN connections   
+Before moving on to the next section   
+Go to VPN => `Site-to-site VPN connections`   
 Select your newly created VPN connection   
-Click on `Download Configuration`   
-Vendor `Cisco`. Platform `ISR Series Routers`   
+Click `Download Configuration`   
+Choose Vendor: `Cisco`. Platform: `ISR Series Routers`   
 Click `Download`  
 
 
-Continue to the next section `Instructions` to configure the onprem routers.
+Continue to the next section, `Instructions`, to configure the on-prem routers
 
 ## 📝 Instructions
 
