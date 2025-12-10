@@ -25,13 +25,13 @@ module "vpn-1" {
   common_tags                    = local.common_tags
 }
 
-module vpn-2 {
-    source = "../../modules/vpn"
-    name = local.vpn2_name
-    customer_gateway =  var.customer_gateway_2
-    transit_gateway_id = module.tgw.transit_gateway_id 
-transit_gateway_route_table_id = module.tgw.transit_gateway_route_table
-    common_tags = local.common_tags
+module "vpn-2" {
+  source                         = "../../modules/vpn"
+  name                           = local.vpn2_name
+  customer_gateway               = var.customer_gateway_2
+  transit_gateway_id             = module.tgw.transit_gateway_id
+  transit_gateway_route_table_id = module.tgw.transit_gateway_route_table
+  common_tags                    = local.common_tags
 }
 
 module "private-rt" {
