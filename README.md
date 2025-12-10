@@ -174,4 +174,6 @@ Continue to the next section, `Instructions`, to configure the on-prem routers
     ├── vpc/           
     └── vpn/     
 ```
+## 📝 Notes
 
+The original idea for this design came from Cloud Trainer, Adrian Cantrill. Link [here](https://github.com/acantril/learn-cantrill-io-labs/tree/master/aws-hybrid-bgpvpn)
