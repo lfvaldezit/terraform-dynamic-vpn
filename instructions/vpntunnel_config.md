@@ -2,7 +2,7 @@
 ##  VPN TUNNEL - CONFIGURATION
 
 Go to EC2 console.   
-Select VPC-ONPREM-ROUTER-1   
+Select `VPC-ONPREM-ROUTER-1`   
 Connect to instance using `Session Manager`.   
 
 ```bash
@@ -14,8 +14,8 @@ Replace the following placeholders:
 
 conn AWS-VPC-GW1
          # Customer Gateway: :
-         left=`ROUTER1_PRIVATE1_IP`
-         leftid=`CONN1_TUNNEL1_ONPREM_OUTSIDE_IP`
+         left=ROUTER1_PRIVATE1_IP
+         leftid=CONN1_TUNNEL1_ONPREM_OUTSIDE_IP
          # Virtual Private Gateway :
          right=CONN1_TUNNEL1_AWS_OUTSIDE_IP
          rightid=CONN1_TUNNEL1_AWS_OUTSIDE_IP
@@ -39,7 +39,7 @@ CTRL+O to save and CTRL+X to exit
 ```bash
 nano ipsec.secrets
 
-Replace the following:
+Replace the following placeholders:
 
 CONN1_TUNNEL1_ONPREM_OUTSIDE_IP CONN1_TUNNEL1_AWS_OUTSIDE_IP : PSK "CONN1_TUNNEL1_PresharedKey"
 CONN1_TUNNEL2_ONPREM_OUTSIDE_IP CONN1_TUNNEL2_AWS_OUTSIDE_IP : PSK "CONN1_TUNNEL2_PresharedKey"
@@ -50,7 +50,8 @@ CTRL+O to save and CTRL+X to exit
 ```bash
 nano ipsec-vti.sh
 
-Replace the following:
+Replace the following placeholders:
+Add the /30 at the end
 
 case "$PLUTO_CONNECTION" in
 AWS-VPC-GW1)
@@ -71,6 +72,6 @@ cp ipsec* /etc
 chmod +x /etc/ipsec-vti.sh
 systemctl restart strongswan
 ```
-
-Check tunnels by running `ifconfig`.   
-You can also check the connection in the AWS VPC console => Site-to-site VPN connections.   
+Do the same for `VPC-ONPREM-ROUTER-2` EC2 instance      
+Check tunnels by running `ifconfig`      
+You can also check the connection in the AWS VPC console => Site-to-site VPN connections      
