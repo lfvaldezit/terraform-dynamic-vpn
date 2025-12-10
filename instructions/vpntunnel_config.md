@@ -2,7 +2,7 @@
 ##  VPN TUNNEL - CONFIGURATION
 
 Go to EC2 console.   
-Select VPC-ONPREM-ROUTER-1
+Select VPC-ONPREM-ROUTER-1   
 Connect to instance using `Session Manager`.   
 
 ```bash
@@ -10,12 +10,12 @@ sudo bash
 cd /home/ubuntu/demo_assets/
 nano ipsec.conf
 
-Replace the following:
+Replace the following placeholders:
 
 conn AWS-VPC-GW1
          # Customer Gateway: :
-         left=ROUTER1_PRIVATE1_IP
-         leftid=CONN1_TUNNEL1_ONPREM_OUTSIDE_IP
+         left=`ROUTER1_PRIVATE1_IP`
+         leftid=`CONN1_TUNNEL1_ONPREM_OUTSIDE_IP`
          # Virtual Private Gateway :
          right=CONN1_TUNNEL1_AWS_OUTSIDE_IP
          rightid=CONN1_TUNNEL1_AWS_OUTSIDE_IP
