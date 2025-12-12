@@ -25,8 +25,9 @@
    ```bash
    aws configure
    ```
-3. **ONPREM infrastructure**   
-   Adjusts the variables in `/environments/onprem/terraform.example.tfvars` as needed
+3. **ONPREM infrastructure**
+
+    `/environments/onprem/terraform.example.tfvars`
 
    ```bash
     name = "vpn-onprem"
@@ -73,7 +74,7 @@ Save the output once the apply is completed
 
 4. **AWS infrastructure**
 
-   Adjusts the variables in `/environments/aws/terraform.example.tfvars` as needed.   
+   `/environments/aws/terraform.example.tfvars`   
    Use the onprem output to complete the following placeholders:   
    - `ROUTER1_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP`   
    - `ROUTER2_CONN1_TUNNEL1-2_ONPREM_OUTSIDE_IP`   
@@ -174,6 +175,7 @@ Continue to the next section, `Instructions`, to configure the on-prem routers
     ├── vpc/           
     └── vpn/     
 ```
+
 ## 📝 Notes
 
 The original idea for this design came from Cloud Trainer, Adrian Cantrill. Link [here](https://github.com/acantril/learn-cantrill-io-labs/tree/master/aws-hybrid-bgpvpn)
