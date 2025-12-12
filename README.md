@@ -132,13 +132,15 @@ Before moving on to the next section
 Go to VPN => `Site-to-site VPN connections`   
 Select your newly created VPN connection   
 Click `Download Configuration`   
-Choose Vendor: `Cisco`. Platform: `ISR Series Routers`   
+Choose Vendor: `Generic`.
 Click `Download`  
 
 
-Continue to the next section, `Instructions`, to configure the on-prem routers
+Continue to the next section, `Instructions`
 
 ## 📝 Instructions
+
+Use the outputs from both infrastructures, as well as the downloaded configurations of both VPN connections, to configure the on-prem routers
 
 - [VPN Tunnel Config](https://github.com/lfvaldezit/terraform-dynamic-vpn/blob/main/instructions/vpntunnel_config.md)
 - [BGP Config](https://github.com/lfvaldezit/terraform-dynamic-vpn/blob/main/instructions/bgp_config.md)
