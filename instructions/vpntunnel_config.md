@@ -1,5 +1,5 @@
 
-##  VPN TUNNEL - CONFIGURATION
+##  VPN TUNNEL CONFIGURATION
 
 Go to EC2 console.   
 Select `VPC-ONPREM-ROUTER-1`   
