@@ -22,8 +22,8 @@ vtysh
 conf t
 frr defaults traditional
 router bgp 65011
-neighbor CONN1_TUNNEL1_AWS_BGP_IP remote-as 64512
-neighbor CONN1_TUNNEL2_AWS_BGP_IP remote-as 64512
+neighbor CONN1_TUNNEL1_AWS_INSIDE_IP remote-as 64512
+neighbor CONN1_TUNNEL2_AWS_INSIDE_IP remote-as 64512
 no bgp ebgp-requires-policy
 address-family ipv4 unicast
 redistribute connected
