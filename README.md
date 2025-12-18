@@ -140,7 +140,7 @@ Continue to the next section, `Instructions`
 
 ## 📝 Instructions
 
-Use the outputs from both infrastructures, as well as the downloaded configurations of both VPN connections, to configure the on-prem routers
+Use the outputs from both infrastructures, as well as the downloaded configurations of both VPN connections to configure the on-prem routers
 
 - [VPN Tunnel Config](https://github.com/lfvaldezit/terraform-dynamic-vpn/blob/main/instructions/vpntunnel_config.md)
 - [BGP Config](https://github.com/lfvaldezit/terraform-dynamic-vpn/blob/main/instructions/bgp_config.md)
