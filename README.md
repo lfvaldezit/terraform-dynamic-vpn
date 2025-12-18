@@ -1,4 +1,4 @@
-# Site-to-site VPN (In progress...)
+# Site-to-site VPN
 
 ## 🏗️ Architecture 
 
